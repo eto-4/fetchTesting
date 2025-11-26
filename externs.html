@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="utf-8"/>
+    <title>Consum servei REST amb fetch</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= TOPBAR ================= -->
+    <header class="topbar">
+        <!-- Títol principal de la pàgina -->
+        <h1>Fetch — Visualització de Dades</h1>
+    </header>
+
+    <!-- ================= LAYOUT PRINCIPAL ================= -->
+    <main class="layout">
+
+        <!-- ================= LLISTAT D'USUARIS ================= -->
+        <section class="usuaris panel-left">
+            <h2>Llistat d'usuaris</h2>
+            <!-- Button INFO trigger -->
+            <div class="tableButtonTrigger" id="tableButtonTrigger">vTaula</div>
+            <!-- Contenidor on s'afegiran les targetes d'usuaris -->
+            <div id="usuarisContainer" class="user-list-container">
+
+                <!-- Missatge de càrrega mentre s'obtenen les dades -->
+                <span class="loadingUsers" id="loadingUsers">Carregant ...</span>
+
+                <!-- Aquí s'insereixen les targetes dels usuaris dinàmicament -->
+                <span class="UsersNullData" id="UsersNullData"></span>
+            </div>
+        </section>
+
+        <!-- ================= USUARI SELECCIONAT ================= -->
+        <section class="usuari panel-right">
+            <h2>Usuari <span id="usuariEscollit"></span></h2>
+
+            <!-- Contenidor on s'inserirà la targeta de l'usuari seleccionat -->
+            <div id="usuariContainer" class="user-viewer">
+
+                <!-- Missatge de càrrega mentre es mostra l'usuari -->
+                <span class="loadingUser" id="loadingUser">Carregant ...</span>
+
+                <!-- Aquí s'insereix la targeta individual de l'usuari -->
+                <span class="UserNullData" id="UserNullData"></span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= MEDAL USER INFO ================= -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-window">
+            <span class="close-btn" id="closeModal">✖</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- ================= SCRIPT PRINCIPAL ================= -->
+    <script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

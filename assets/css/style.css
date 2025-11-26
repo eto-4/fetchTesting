@@ -1,0 +1,397 @@
+/* ========================= */
+/* -------- GLOBAL --------- */
+/* ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #101622, #0b0f17 60%);
+    color: #e8ecf5;
+    min-height: 100vh;
+}
+
+/* ========================= */
+/* -------- TOP BAR -------- */
+/* ========================= */
+
+.topbar {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.topbar h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: #78aaff;
+    text-shadow: 0 0 8px #3e6bff;
+}
+
+/* ========================================= */
+/* ======== AJUSTOS DE LAYOUT I ALTURA ===== */
+/* ========================================= */
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 40px;
+    padding: 40px 60px;
+    height: calc(100vh - 120px);
+}
+
+.panel-left,
+.panel-right {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.panel-left h2,
+.panel-right h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #9dbdff;
+    text-shadow: 0 0 6px rgba(150,180,255,0.4);
+    border-bottom: 2px solid rgb(150, 170, 255, 0.55);
+    padding-left: 5px;
+}
+
+/* ========================================= */
+/* ======== SCROLL LLISTA D'USUARIS  ======= */
+/* ========================================= */
+
+.user-list-container {
+    flex: 1;
+    overflow-y: auto;     
+    padding-right: 10px;  
+}
+
+.user-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+.user-list-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+.user-list-container::-webkit-scrollbar-thumb {
+    background: rgba(120, 150, 255, 0.35);
+    border-radius: 10px;
+}
+.user-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 170, 255, 0.55);
+}
+
+/* ========================= */
+/* ----- USER LIST --------- */
+/* ========================= */
+
+.usuaris {
+    position: relative;
+}
+
+.tableButtonTrigger {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: rgb(150, 170, 255, 0.55);
+    color: #05080c;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.4s ease;
+}
+
+.tableButtonTrigger:hover {
+    transform: translateY(-2px);
+    background-color: rgb(150, 170, 255, 0.75);
+    box-shadow: 0px 0px 10px #000F;
+}
+
+#usuarisContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 70vh;
+}
+
+.loadingUsers,
+.UsersNullData,
+.loadingUser,
+.UserNullData {
+    font-size: 1.2rem;
+    color: #8899cc;
+}
+
+[id^="usuarisContainer"] > div {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+[id^="usuarisContainer"] > div:hover {
+    background: rgba(120, 160, 255, 0.10);
+    transform: translateY(3px);
+}
+
+.pfp {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #6fa2ff;
+}
+
+.nom {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.veureButton {
+    margin-left: auto;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #3e63ff;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.veureButton:hover {
+    background: #5a7cff;
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/* ---- USER SELECTION ----- */
+/* ========================= */
+
+.user-viewer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+#usuariContainer {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    padding-top: 40px;
+}
+
+.targetaUser {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5%;
+    width: 90%;
+    max-width: 550px;
+    padding: 35px;   
+    border-radius: 25px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    box-shadow: 0 0 10px rgba(60,90,255,0.35);
+    transition: all 0.5s ease;
+}
+
+.targetaUser:hover {
+    box-shadow: 0 0 30px rgba(60,90,255,0.6);
+    transform: translateY(3px);
+}
+
+
+.targetaUser .pfp {
+    width: 150px;
+    height: 150px;
+    border-width: 4px;
+}
+
+.infoDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    line-height: 40px;
+    flex: 1;
+}
+
+.infoDisplay > div,
+.infoDisplay > h4,
+.infoDisplay > p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label {
+    font-weight: 600;
+    color: #aecdff;
+    font-size: 1.15rem;
+}
+
+.value {
+    font-size: 1.15rem;
+    opacity: 0.88;
+}
+
+
+.nom {
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.cog,
+.email {
+    font-size: 1.25rem;
+    margin-top: 5px;
+}
+
+/* ========================= */
+/*      MODAL INFORMATIU     */
+/* ========================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-window {
+    position: relative;
+    height: 70vh;
+    width: 70vw;
+}
+
+.modal-window table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 1rem;
+    background-color: #101622;
+    color: #e8ecf5;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.modal-window thead {
+    background: rgba(120,150,255,0.25);
+}
+
+.modal-window thead th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(150,170,255,0.55);
+}
+
+.modal-window tbody tr {
+    background: rgba(255,255,255,0.08);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-window tbody tr:hover {
+    background: rgba(120,160,255,0.15);
+    transform: translateY(2px);
+}
+
+.modal-window tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    vertical-align: middle;
+}
+
+/* Avatar en la tabla */
+.modal-window tbody td img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #6fa2ff;
+}
+
+/* Scroll si la tabla es muy grande */
+.modal-window .table-container {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-window .table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-window .table-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+
+.modal-window .table-container::-webkit-scrollbar-thumb {
+    background: rgba(120,150,255,0.35);
+    border-radius: 10px;
+}
+
+.modal-window .table-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(150,170,255,0.55);
+}
+
+.close-btn {
+    position: absolute;
+    top: -20px;
+    right: -35px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* ========================= */
+/* ------- RESPONSIVE ------ */
+/* ========================= */
+
+@media (max-width: 1080px) {
+    .layout {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar h1 {
+        font-size: 1.8rem;
+    }
+
+    .panel-left, .panel-right {
+        padding: 18px;
+    }
+}
